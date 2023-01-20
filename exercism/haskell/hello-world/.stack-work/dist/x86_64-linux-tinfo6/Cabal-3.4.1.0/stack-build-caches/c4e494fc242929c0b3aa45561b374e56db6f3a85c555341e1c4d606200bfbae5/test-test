@@ -1,0 +1,14 @@
+/home/rafazeero/.stack/programs/x86_64-linux/ghc-tinfo6-9.0.2/lib/ghc-9.0.2/include/ghcversion.h:
+  hash: b6281754d6dc5c5462a97f01fbffb615a7d9f031384e8e8250fce23e8f43f266
+? /home/rafazeero/Documents/vscode/challenges/exercism/haskell/hello-world/.stack-work/dist/x86_64-linux-tinfo6/Cabal-3.4.1.0/build/test/autogen/Paths_hello_world.hs
+: hash: f5e96c764b47a33357df10bc1b1ed74a6e0b792852a0d7a3cba886810be5e667
+? /home/rafazeero/Documents/vscode/challenges/exercism/haskell/hello-world/.stack-work/dist/x86_64-linux-tinfo6/Cabal-3.4.1.0/build/test/autogen/cabal_macros.h
+: hash: 97b98fdb3783338e8f91efac9938ebc0077451d1ed1649614f26a0135fdf596c
+/home/rafazeero/Documents/vscode/challenges/exercism/haskell/hello-world/hello-world.cabal:
+  hash: be2dfc653421b6c2f6a6c71924d320ed780dc2c5180bfddc0c728da3d2f1351f
+/home/rafazeero/Documents/vscode/challenges/exercism/haskell/hello-world/package.yaml:
+  hash: 160a1a88b7a5bd0f6f1ffd3e24f56cbba5e4d4fbd7f76ea73d649199ca9d76a5
+/home/rafazeero/Documents/vscode/challenges/exercism/haskell/hello-world/test/Tests.hs:
+  hash: 6aa7479ae49b7251b54ea5e75f0cc8f20c8bb4527873a20aefa67cfbb78184d3
+/usr/include/stdc-predef.h:
+  hash: cb08cd5d4cc059a90833ac48a284d25016e8d56ded8ad4cd98d8ac59cc5053f3
