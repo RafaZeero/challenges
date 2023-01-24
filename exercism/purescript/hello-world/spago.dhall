@@ -9,7 +9,6 @@
   , "foldable-traversable"
   , "integers"
   , "lists"
-  , "math"
   , "maybe"
   , "ordered-collections"
   , "partial"
