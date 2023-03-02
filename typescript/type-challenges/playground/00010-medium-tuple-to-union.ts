@@ -20,7 +20,11 @@
 
 /* _____________ Your Code Here _____________ */
 
-type TupleToUnion<T> = any
+// type TupleToUnion<T extends Array<any>> = T extends Array<infer A> ? A : never
+type TupleToUnion<T extends Array<any>> = T[number]
+
+const test: TupleToUnion<['1', '2']>
+//     ^?
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'

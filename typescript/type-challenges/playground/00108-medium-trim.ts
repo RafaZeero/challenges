@@ -18,7 +18,9 @@
 
 /* _____________ Your Code Here _____________ */
 
-type Trim<S extends string> = any
+type Trim<S extends string> = S extends string ? 'sim' : 'nao'
+
+const test: Trim<'foo'>
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
