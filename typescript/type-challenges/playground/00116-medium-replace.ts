@@ -18,10 +18,17 @@
 
 /* _____________ Your Code Here _____________ */
 
-type Replace<S extends string, From extends string, To extends string> = any
+type Replace<
+  S extends string,
+  From extends string,
+  To extends string,
+> = S extends `${infer A}${From extends '' ? never : From}${infer B}` ? `${A}${To}${B}` : S;
+
+const test: Replace<'abc', 'a', 'b'> = 'sim';
+//     ^?
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from '@type-challenges/utils';
 
 type cases = [
   Expect<Equal<Replace<'foobar', 'bar', 'foo'>, 'foofoo'>>,
@@ -30,7 +37,7 @@ type cases = [
   Expect<Equal<Replace<'foobarbar', 'bar', ''>, 'foobar'>>,
   Expect<Equal<Replace<'foobarbar', 'bra', 'foo'>, 'foobarbar'>>,
   Expect<Equal<Replace<'', '', ''>, ''>>,
-]
+];
 
 /* _____________ Further Steps _____________ */
 /*
