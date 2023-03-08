@@ -18,12 +18,18 @@
 
 /* _____________ Your Code Here _____________ */
 
-type Trim<S extends string> = S extends string ? 'sim' : 'nao'
+type Whitespace = ' ' | '\n' | '\t';
+type Trim<S extends string> = S extends `${Whitespace}${infer Value}`
+  ? Trim<Value>
+  : S extends `${infer Value}${Whitespace}`
+  ? Trim<Value>
+  : S;
 
-const test: Trim<'foo'>
+const test: Trim<'  foo'>;
+//      ^?
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from '@type-challenges/utils';
 
 type cases = [
   Expect<Equal<Trim<'str'>, 'str'>>,
@@ -34,7 +40,7 @@ type cases = [
   Expect<Equal<Trim<'   \n\t foo bar \t'>, 'foo bar'>>,
   Expect<Equal<Trim<''>, ''>>,
   Expect<Equal<Trim<' \n\t '>, ''>>,
-]
+];
 
 /* _____________ Further Steps _____________ */
 /*
