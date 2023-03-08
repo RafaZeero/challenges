@@ -12,17 +12,22 @@
 
 /* _____________ Your Code Here _____________ */
 
-type LengthOfString<S extends string> = any
+type LengthOfString<S extends string, K extends string[] = []> = S extends `${infer H}${infer Rest}`
+  ? LengthOfString<Rest, [...K, H]>
+  : K['length'];
+
+const test: LengthOfString<'aaba'> = '';
+//      ^?
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from '@type-challenges/utils';
 
 type cases = [
   Expect<Equal<LengthOfString<''>, 0>>,
   Expect<Equal<LengthOfString<'kumiko'>, 6>>,
   Expect<Equal<LengthOfString<'reina'>, 5>>,
   Expect<Equal<LengthOfString<'Sound! Euphonium'>, 16>>,
-]
+];
 
 /* _____________ Further Steps _____________ */
 /*
