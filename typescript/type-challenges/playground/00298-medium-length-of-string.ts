@@ -12,11 +12,17 @@
 
 /* _____________ Your Code Here _____________ */
 
-type LengthOfString<S extends string, K extends string[] = []> = S extends `${infer H}${infer Rest}`
-  ? LengthOfString<Rest, [...K, H]>
-  : K['length'];
+type LengthOfString<
+  StringValue extends string,
+  ArrayValue extends string[] = [],
+  // Separate first Letter of the current word into two Types: FirstLetter and Rest
+> = StringValue extends `${infer FirstLetter}${infer Rest}`
+  ? // Recursively call with the Rest of the word, now it has -1 length in the StringValue and +1 length in the ArrayValue
+    LengthOfString<Rest, [...ArrayValue, FirstLetter]>
+  : // Will reach here when the StringValue will not extends the condition above, then will show the ArrayValue length
+    ArrayValue['length'];
 
-const test: LengthOfString<'aaba'> = '';
+const test: LengthOfString<'okjadsl'> = '';
 //      ^?
 
 /* _____________ Test Cases _____________ */

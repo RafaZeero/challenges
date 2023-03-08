@@ -25,7 +25,7 @@ type Trim<S extends string> = S extends `${Whitespace}${infer Value}`
   ? Trim<Value>
   : S;
 
-const test: Trim<'  foo'>;
+const test: Trim<'  foo'> = 'foo';
 //      ^?
 
 /* _____________ Test Cases _____________ */
