@@ -21,17 +21,39 @@
 
 /* _____________ Your Code Here _____________ */
 
-type Fibonacci<T extends number> = any
+type Length<Tuple extends number[]> = Tuple['length'];
+
+type BuildTuple<Length extends number, Tuple extends any[] = []> = Tuple['length'] extends Length
+  ? Tuple
+  : BuildTuple<Length, [...Tuple, any]>;
+
+type Add<FirstNumber extends number, SecondNumber extends number> = Length<
+  [...BuildTuple<FirstNumber>, ...BuildTuple<SecondNumber>]
+>;
+
+type FibonacciRes<
+  T extends number,
+  CurrentIndex extends any[] = [1],
+  Prev extends any[] = [],
+  Current extends any[] = [1]
+> = CurrentIndex['length'] extends T
+  ? Current['length']
+  : FibonacciRes<T, [...CurrentIndex, 1], Current, [...Prev, ...Current]>;
+
+type Fibonacci<T extends number> = Length<BuildTuple<T>>;
+
+const test: FibonacciRes<5> = '';
+//      ^?
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from '@type-challenges/utils';
 
 type cases = [
-  Expect<Equal<Fibonacci<1>, 1>>,
-  Expect<Equal<Fibonacci<2>, 1>>,
-  Expect<Equal<Fibonacci<3>, 2>>,
-  Expect<Equal<Fibonacci<8>, 21>>,
-]
+  Expect<Equal<FibonacciRes<1>, 1>>,
+  Expect<Equal<FibonacciRes<2>, 1>>,
+  Expect<Equal<FibonacciRes<3>, 2>>,
+  Expect<Equal<FibonacciRes<8>, 21>>
+];
 
 /* _____________ Further Steps _____________ */
 /*
