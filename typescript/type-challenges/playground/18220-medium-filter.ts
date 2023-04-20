@@ -12,18 +12,25 @@
 
 /* _____________ Your Code Here _____________ */
 
-type Filter<T extends any[], P> = []
+type FilterUnion<A, B> = A extends B ? [A] : []
+
+type Filter<T extends any[], P> = T extends [infer Current, ...infer Rest]
+  ? [...(FilterUnion<Current, P>), ...Filter<Rest, P>]
+  : []
+
+const test: Filter<[1, 2, 3, 4], 3 | 1> = ''
+//    ^?
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from '@type-challenges/utils';
 
-type Falsy = false | 0 | '' | null | undefined
+type Falsy = false | 0 | '' | null | undefined;
 
 type cases = [
   Expect<Equal<Filter<[0, 1, 2], 2>, [2]>>,
   Expect<Equal<Filter<[0, 1, 2], 0 | 1>, [0, 1]>>,
   Expect<Equal<Filter<[0, 1, 2], Falsy>, [0]>>,
-]
+];
 
 /* _____________ Further Steps _____________ */
 /*
