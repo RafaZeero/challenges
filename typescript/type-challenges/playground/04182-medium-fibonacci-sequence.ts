@@ -38,11 +38,11 @@ type FibonacciRes<
   Current extends any[] = [1]
 > = CurrentIndex['length'] extends T
   ? Current['length']
-  : FibonacciRes<T, [...CurrentIndex, 1], Current, [...Prev, ...Current]>;
+  : FibonacciRes<T, [...Prev, ...CurrentIndex, 1], Current, [...Prev, ...Current, 1]>;
 
 type Fibonacci<T extends number> = Length<BuildTuple<T>>;
 
-const test: FibonacciRes<5> = '';
+const test: FibonacciRes<1> = '';
 //      ^?
 
 /* _____________ Test Cases _____________ */
