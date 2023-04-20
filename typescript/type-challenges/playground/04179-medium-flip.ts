@@ -20,7 +20,12 @@
 
 /* _____________ Your Code Here _____________ */
 
-type Flip<T> = any
+type Flip<T extends Record<any, any>> = {
+  [Key in keyof T as T[Key] | `${T[Key]}`]: Key
+}
+
+const test: Flip<{nome: 'rafael'}> = { rafael: 'nome' }
+//     ^?
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect, NotEqual } from '@type-challenges/utils'
